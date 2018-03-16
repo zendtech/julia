@@ -33,26 +33,26 @@ function main() {
 	for (i = 0; i < 2; i++) {
 		n = 1;
 		zoom = 1.0;
-	    t0 = new Date().getTime() / 1000.0;
+		t0 = new Date().getTime() / 1000.0;
 		while (zoom < 10.0) {
-	        t1 = new Date().getTime() / 1000.0;
+			t1 = new Date().getTime() / 1000.0;
 			frac = new Julia(limits, size, 200);
 			frac.zoom(n, zoom);
 			frac.generateImage([-0.70176, -0.3842], 255, 70);
-        	t2 = new Date().getTime() / 1000.0;
-        	time = t2 - t1;
-        	fps = 1.0 / time;
-        	var num = n.toString();
-        	while (num.length < 3) {
-        		num = ' ' + num;
+			t2 = new Date().getTime() / 1000.0;
+			time = t2 - t1;
+			fps = 1.0 / time;
+			var num = n.toString();
+			while (num.length < 3) {
+				num = ' ' + num;
 			}
-	        print("Frame " + num + " zoom " + zoom.toFixed(1) + " time " + time.toFixed(3) + " sec FPS " + fps.toFixed(1));
+			print("Frame " + num + " zoom " + zoom.toFixed(1) + " time " + time.toFixed(3) + " sec FPS " + fps.toFixed(1));
 			zoom *= 1.02;
 			n++;
 		}
-       	time = t2 - t0;
-       	fps = (n - 1) / time;
-	    print("=======\nTotal Time " + time.toFixed(3) + " sec, AVG FPS " + fps.toFixed(1) + "\n");
+		time = t2 - t0;
+		fps = (n - 1) / time;
+		print("=======\nTotal Time " + time.toFixed(3) + " sec, AVG FPS " + fps.toFixed(1) + "\n");
 	}
 }
 

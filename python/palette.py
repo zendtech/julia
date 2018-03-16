@@ -1,6 +1,6 @@
 import math
 
-class Palette:	
+class Palette:
 	_cache=0
 	_image=0
 	_redLevel=0

@@ -8,7 +8,7 @@ public class Palette {
 	private int scaleImageColor;
 	private double factor;
 
-    public Palette(int maxIterations, Image image, int redLevel, int blueLevel) {
+	public Palette(int maxIterations, Image image, int redLevel, int blueLevel) {
 		this._image = image;
 		this._redLevel = redLevel;
 		this._blueLevel = blueLevel;
@@ -21,21 +21,21 @@ public class Palette {
 		}
 	}
 
-    public int getInsideColor() {
+	public int getInsideColor() {
 		return this.insideImageColor;
-    }
+	}
 
-    public int getScaleColor() {
+	public int getScaleColor() {
 		return this.scaleImageColor;
-    }
+	}
 
-    public int getColor(int offset) {
-	    if (this._cache[offset] >= 0) {
-	     	return this._cache[offset];
-	    }
+	public int getColor(int offset) {
+		if (this._cache[offset] >= 0) {
+			return this._cache[offset];
+		}
 		int green = (int)(Math.log(offset) * this.factor);
 		int ret = this._image.allocateColor(this._redLevel, green, this._blueLevel);
 		this._cache[offset] = ret;
 		return ret;
-    }
+	}
 }

@@ -36,22 +36,22 @@ class Julia extends EscapeTime {
 				while ($x2+$y2 < $limit && $iteration <= $maxIterations ) {
 // did try and do this within a beutiful class for Complex numbers but number of functional calls
 // quickly becomes too large array arithmatic seems quickest way
-				    $z1 = 2*$z0*$z1 + $juliaImag;
-				    $z0 = $x2 - $y2 + $juliaReal;
+					$z1 = 2*$z0*$z1 + $juliaImag;
+					$z0 = $x2 - $y2 + $juliaReal;
 
-				    $x2 = $z0 * $z0;
-				    $y2 = $z1 * $z1;
+					$x2 = $z0 * $z0;
+					$y2 = $z1 * $z1;
 
-				    ++$iteration;
+					++$iteration;
 				}
 				if ($iteration >= $maxIterations) {
 					$this->_image->setPixel($i, $j, $this->_colours->getInsideColor());
 				} else {
-				    $this->_image->setPixel($i, $j, $this->_colours->getColor($iteration));
+					$this->_image->setPixel($i, $j, $this->_colours->getColor($iteration));
 				}
 
 				++$count;
-		    }
+			}
 		}
 
 		$this->_image->show($this->frame);

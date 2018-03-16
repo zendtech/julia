@@ -40,6 +40,6 @@ class Julia(escapeTime.EscapeTime):
 				if (iteration >= maxIterations):
 					self._image.setPixel(i, j, self._colours.getInsideColor())
 				else:
-				    self._image.setPixel(i, j, self._colours.getColor(iteration))
+					self._image.setPixel(i, j, self._colours.getColor(iteration))
 				count += 1
 		self._image.show(self.frame)

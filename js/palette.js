@@ -18,9 +18,9 @@ function Palette(maxIterations, image, redLevel, blueLevel) {
 
 	this.getScaleColor = function() {
 		return this.scaleImageColor;
-    }
+	}
 
-    this.getColor = function(offset) {
+	this.getColor = function(offset) {
 		if (this._cache[offset] >= 0) {
 			return this._cache[offset];
 		}

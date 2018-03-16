@@ -9,7 +9,7 @@ class Palette {
 	private $scaleImageColor;
 	private $factor;
 
-    public function  __construct($maxIterations, $image, $redLevel, $blueLevel) {
+	public function  __construct($maxIterations, $image, $redLevel, $blueLevel) {
 		$this->_image = $image;
 		$this->_redLevel = $redLevel;
 		$this->_blueLevel = $blueLevel;
@@ -19,22 +19,22 @@ class Palette {
 		$this->_cache = array_fill(0, $maxIterations, null);
 	}
 
-    public function getInsideColor() {
+	public function getInsideColor() {
 		return $this->insideImageColor;
-    }
+	}
 
-    public function getScaleColor() {
+	public function getScaleColor() {
 		return $this->scaleImageColor;
-    }
+	}
 
-    public function getColor($offset) {
-	    if (isset($this->_cache[$offset])) {
-	     	return $this->_cache[$offset];
-	    }
+	public function getColor($offset) {
+		if (isset($this->_cache[$offset])) {
+			return $this->_cache[$offset];
+		}
 		$green = (int)(log($offset) * $this->factor);
 		$return = $this->_image->allocateColor($this->_redLevel, $green, $this->_blueLevel);
 		$this->_cache[$offset] = $return;
 		return $return;
 
-    }
+	}
 }
