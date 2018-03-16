@@ -12,7 +12,7 @@ function EscapeTime(limits, size, maximumIterations) {
 
 	this.frame = null;
 	this._image = null;
-	this_colours = null;
+	this._colours = null;
 
 	this.setUpImage = function(redLevel, blueLevel) {
 		this._image = new Image(this._imageWidth, this._imageHeight);
