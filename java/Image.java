@@ -1,28 +1,42 @@
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+
 public class Image {
 
-	//private $img;
-	private Color color;
+	private BufferedImage img;
+	public int mode = 0;
 
 	public Image(int width, int height) {
-		//$this->img = imagecreate($width, $height);	
-		this.color = new Color();
+		this.img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 	}
 
-	public Color allocateColor(int r, int g, int b) {
-		//return imagecolorallocate($this->img, $r, $g, $b);
-		return this.color;
+	public int allocateColor(int r, int g, int b) {
+		int rgb = (255 << 24);
+		rgb |= (r << 16);
+		rgb |= (g << 8);
+		rgb |= b;
+		return rgb;
 	}
 
-	public void setPixel(int x, int y, Color color) {
-		//imagesetpixel($this->img, $x, $y, $color);
+	public void setPixel(int x, int y, int color) {
+		this.img.setRGB(x, y, color);
 	}
 
 	public void show(int frame) {
-		//header('Content-Type: image/png');
-		//imagepng($this->img);
-
-		//imagepng($this->img, sprintf("julia-%03d.png", $frame));
-
-		//imagedestroy($this->img);
+		if (mode == 1) {
+			//header('Content-Type: image/png');
+			//imagepng($this->img);
+		} else if (mode == 2) {
+			try {
+				File outputfile = new File(String.format("julia-%03d.png", frame));
+				ImageIO.write(this.img, "png", outputfile);
+			} catch (IOException e) {
+				// TODO:
+			}
+		} else if (mode == 3) {
+			//imagedestroy($this->img);
+		}
 	}
 }

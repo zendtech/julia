@@ -1,5 +1,6 @@
 *~
 .#*
 *.
+**.png
 java/*.class
 python/*.pyc
