@@ -9,7 +9,9 @@ public class Image {
 	public int mode = 0;
 
 	public Image(int width, int height) {
-		this.img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		if (this.mode != 0) {
+			this.img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		}
 	}
 
 	public int allocateColor(int r, int g, int b) {
@@ -17,21 +19,23 @@ public class Image {
 	}
 
 	public void setPixel(int x, int y, int color) {
-		this.img.setRGB(x, y, color);
+		if (this.mode != 0) {
+			this.img.setRGB(x, y, color);
+		}
 	}
 
 	public void show(int frame) {
-		if (mode == 1) {
+		if (this.mode == 2) {
 			//header('Content-Type: image/png');
 			//imagepng($this->img);
-		} else if (mode == 2) {
+		} else if (this.mode == 3) {
 			try {
 				File outputfile = new File(String.format("julia-%03d.png", frame));
 				ImageIO.write(this.img, "png", outputfile);
 			} catch (IOException e) {
 				// TODO:
 			}
-		} else if (mode == 3) {
+		} else if (this.mode == 4) {
 			//imagedestroy($this->img);
 		}
 	}
