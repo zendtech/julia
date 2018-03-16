@@ -1,8 +1,9 @@
-load('escapeTime.js');
+load('./escapeTime.js');
 
-class Julia extends EscapeTime {
+function Julia(limits, size, maximumIterations) {
+	EscapeTime.call(this, limits, size, maximumIterations);
 
-	generateImage(constant, redLevel, blueLevel) {
+	this.generateImage = function(constant, redLevel, blueLevel) {
 		var juliaReal = + constant[0];
 		var juliaImag = + constant[1];
 		var count = 0;

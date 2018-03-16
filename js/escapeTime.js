@@ -1,5 +1,5 @@
-load('palette.js');
-load('image.js');
+load('./palette.js');
+load('./image.js');
 
 function EscapeTime(limits, size, maximumIterations) {
 	this._minX = limits[0];

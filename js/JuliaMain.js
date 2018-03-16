@@ -1,4 +1,19 @@
-load('julia.js');
+if (typeof(print) === "undefined") {
+	print = function(str) {
+		console.log(str);
+	}
+}
+
+if (typeof(load) === "undefined") {
+	var geval = eval;
+	load = function(name) {
+		var fs = require('fs');
+		var contents = fs.readFileSync(name, 'utf8');
+		geval(contents);
+	}
+}
+
+load('./julia.js');
 
 function main() {
 	var size;
@@ -27,7 +42,11 @@ function main() {
         	t2 = new Date().getTime() / 1000.0;
         	time = t2 - t1;
         	fps = 1.0 / time;
-	        print("Frame " + n.toString().padStart(3) + " zoom " + zoom.toFixed(1) + "time " + time.toFixed(3) + " sec FPS " + fps.toFixed(1));
+        	var num = n.toString();
+        	while (num.length < 3) {
+        		num = ' ' + num;
+			}
+	        print("Frame " + num + " zoom " + zoom.toFixed(1) + " time " + time.toFixed(3) + " sec FPS " + fps.toFixed(1));
 			zoom *= 1.02;
 			n++;
 		}
