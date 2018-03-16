@@ -17,12 +17,12 @@ class Image {
 	}
 
 	public function show($frame) {
-		if ($mode == 1) {
+		if ($this->mode == 1) {
 			header('Content-Type: image/png');
 			imagepng($this->img);
-		} else if ($mode == 2) {
+		} else if ($this->mode == 2) {
 			imagepng($this->img, sprintf("julia-%03d.png", $frame));
-		} else if ($mode == 3) {
+		} else if ($this->mode == 3) {
 			imagedestroy($this->img);
 		}
 	}
