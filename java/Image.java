@@ -9,15 +9,11 @@ public class Image {
 	public int mode = 0;
 
 	public Image(int width, int height) {
-		this.img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+		this.img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 	}
 
 	public int allocateColor(int r, int g, int b) {
-		int rgb = (255 << 24);
-		rgb |= (r << 16);
-		rgb |= (g << 8);
-		rgb |= b;
-		return rgb;
+		return (r << 16) | (g << 8) | b;
 	}
 
 	public void setPixel(int x, int y, int color) {
