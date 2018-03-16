@@ -8,7 +8,6 @@ class Julia extends EscapeTime {
 		$juliaImag = (double)$constant[1];
 		$count = 0;
 		$this->setUpImage($redLevel, $blueLevel);
-		$y = 0.0;
 		$width = (int)$this->_imageWidth;
 		$height = (int)$this->_imageHeight;
 		$minX = (double)$this->_minX;
@@ -21,7 +20,6 @@ class Julia extends EscapeTime {
 		$heightFactor = 1.0 / ($height-1);
 		for ($i=0; $i<$width; $i++) {
 			for ($j=0; $j<$height; $j++) {
-				$oldY = $y;
 				// What values of x and y does this pixel represent?
 				$x = $minX+$i*(($maxX - $minX) * $widthFactor);
 				$y = $minY+$j*(($maxY - $minY) * $heightFactor);

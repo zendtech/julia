@@ -7,7 +7,6 @@ class Julia extends EscapeTime {
 		var juliaImag = + constant[1];
 		var count = 0;
 		this.setUpImage(redLevel, blueLevel);
-		var y = 0.0;
 		var width = this._imageWidth | 0;
 		var height = this._imageHeight | 0;
 		var minX = + this._minX;
@@ -18,13 +17,11 @@ class Julia extends EscapeTime {
 		var limit = 4.0;
 		var widthFactor = 1.0 / (width-1);
 		var heightFactor = 1.0 / (height-1);
-		var x;
 		for (var i=0; i<width; i++) {
 			for (var j=0; j<height; j++) {
-				var oldY = y;
 				// What values of x and y does this pixel represent?
-				x = minX + i * ((maxX - minX) * widthFactor);
-				y = minY + j * ((maxY - minY) * heightFactor);
+				var x = minX + i * ((maxX - minX) * widthFactor);
+				var y = minY + j * ((maxY - minY) * heightFactor);
 
 				var iteration = 0;
 				var z0 = x;

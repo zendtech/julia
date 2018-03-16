@@ -9,8 +9,6 @@ public class Julia extends EscapeTime {
 		double juliaImag = constant[1];
 		int count = 0;
 		this.setUpImage(redLevel, blueLevel);
-		double x;
-		double y = 0;
 		int width = this._imageWidth;
 		int height = this._imageHeight;
 		double minX = this._minX;
@@ -23,10 +21,9 @@ public class Julia extends EscapeTime {
 		double heightFactor = 1.0 / (height-1);
 		for (int i=0; i<width; i++) {
 			for (int j=0; j<height; j++) {
-				double oldY = y;
 				// What values of x and y does this pixel represent?
-				x = minX + i * ((maxX - minX) * widthFactor);
-				y = minY + j * ((maxY - minY) * heightFactor);
+				double x = minX + i * ((maxX - minX) * widthFactor);
+				double y = minY + j * ((maxY - minY) * heightFactor);
 
 				int iteration = 0;
 				double z0 = x;

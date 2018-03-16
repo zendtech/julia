@@ -7,7 +7,6 @@ class Julia(escapeTime.EscapeTime):
 		juliaImag = float(constant[1])
 		count = 0
 		self.setUpImage(redLevel, blueLevel)
-		y = 0.0
 		width = int(self._imageWidth)
 		height = int(self._imageHeight)
 		minX = float(self._minX)
@@ -20,7 +19,6 @@ class Julia(escapeTime.EscapeTime):
 		heightFactor = 1.0 / (height-1)
 		for i in range(width):
 			for j in range(height):
-				oldY = y
 				# What values of x and y does this pixel represent?
 				x = minX + i * ((maxX - minX) * widthFactor)
 				y = minY + j * ((maxY - minY) * heightFactor)
