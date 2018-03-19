@@ -47,7 +47,8 @@ class Julia extends EscapeTime {
 				if ($iteration >= $maxIterations) {
 					$this->_image->setPixel($i, $j, $this->_colours->getInsideColor());
 				} else {
-					$this->_image->setPixel($i, $j, $this->_colours->getColor($iteration));
+					$_iteration = $iteration;
+					$this->_image->setPixel($i, $j, $this->_colours->getColor($_iteration));
 				}
 
 				++$count;
