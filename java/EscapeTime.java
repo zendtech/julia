@@ -1,3 +1,5 @@
+import java.awt.image.BufferedImage;
+
 public class EscapeTime {
 	protected int frame;
 
@@ -13,7 +15,10 @@ public class EscapeTime {
 	protected Image _image;
 	protected Palette _colours;
 
-	public EscapeTime(double limits[], int size[], int maximumIterations) {
+	private int mode;
+
+	public EscapeTime(int mode, double limits[], int size[], int maximumIterations) {
+		this.mode = mode;
 		this._minX = limits[0];
 		this._maxX = limits[1];
 		this._minY = limits[2];
@@ -24,7 +29,7 @@ public class EscapeTime {
 	}
 
 	public void setUpImage(int redLevel, int blueLevel) {
-		this._image = new Image(this._imageWidth, this._imageHeight);
+		this._image = new Image(this._imageWidth, this._imageHeight, this.mode);
 
 		// Load the palette to find colours
 		this._colours = new Palette(this._maxIterations, this._image, redLevel, blueLevel);
@@ -36,5 +41,9 @@ public class EscapeTime {
 		this._minY /= factor;
 		this._maxX /= factor;
 		this._maxY /= factor;
+	}
+
+	public BufferedImage getImage() {
+		return this._image.getImage();
 	}
 }

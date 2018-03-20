@@ -4,7 +4,8 @@ class Image {
 	private $img;
 	public $mode = 0;
 
-	public function __construct($width, $height) {
+	public function __construct($width, $height, $mode) {
+		$this->mode = $mode;
 		if ($this->mode != 0) {
 			$this->img = imagecreate($width, $height);
 		}
@@ -27,6 +28,7 @@ class Image {
 	public function show($frame) {
 		if ($this->mode == 2) {
 			header('Content-Type: image/png');
+			header('Cache-Control: no-cache');
 			imagepng($this->img);
 		} else if ($this->mode == 3) {
 			imagepng($this->img, sprintf("julia-%03d.png", $frame));

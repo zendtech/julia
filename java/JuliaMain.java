@@ -11,7 +11,7 @@ public class JuliaMain {
 			t0 = new Date().getTime() / 1000.0;
 			while (zoom < 10.0) {
 		 		t1 = new Date().getTime() / 1000.0;
-				Julia frac = new Julia(limits, size, 200);
+				Julia frac = new Julia(0, limits, size, 200);
 				frac.zoom(n, zoom);
 				frac.generateImage(new double[] { -0.70176, -0.3842 }, 255, 70);
 				t2 = new Date().getTime() / 1000.0;

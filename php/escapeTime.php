@@ -17,7 +17,10 @@ class EscapeTime {
 	protected $_image;
 	protected $_colours;
 
-	public function  __construct($limits, $size, $maximumIterations) {
+	private $mode;
+
+	public function  __construct($mode, $limits, $size, $maximumIterations) {
+		$this->mode = $mode;
 		list($this->_minX, $this->_maxX, $this->_minY, $this->_maxY) = $limits;
 		list($this->_imageWidth, $this->_imageHeight) = $size;
 
@@ -25,7 +28,7 @@ class EscapeTime {
 	}
 
 	public function setUpImage($redLevel, $blueLevel) {
-		$this->_image = new Image($this->_imageWidth, $this->_imageHeight);
+		$this->_image = new Image($this->_imageWidth, $this->_imageHeight, $this->mode);
 
 		// Load the palette to find colours
 		$this->_colours = new Palette($this->_maxIterations, $this->_image, $redLevel, $blueLevel);

@@ -8,7 +8,8 @@ public class Image {
 	private BufferedImage img;
 	public int mode = 0;
 
-	public Image(int width, int height) {
+	public Image(int width, int height, int mode) {
+		this.mode = mode;
 		if (this.mode != 0) {
 			this.img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		}
@@ -38,5 +39,9 @@ public class Image {
 		} else if (this.mode == 4) {
 			//imagedestroy($this->img);
 		}
+	}
+
+	public BufferedImage getImage() {
+		return this.img;
 	}
 }

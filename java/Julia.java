@@ -1,7 +1,7 @@
 public class Julia extends EscapeTime {
 
-	public Julia(double[] limits, int[] size, int maximumIterations) {
-		super(limits, size, maximumIterations);
+	public Julia(int mode, double[] limits, int[] size, int maximumIterations) {
+		super(mode, limits, size, maximumIterations);
 	}
 
 	public void generateImage(double constant[], int redLevel, int blueLevel) {

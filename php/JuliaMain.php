@@ -10,7 +10,7 @@ function main() {
 		$t0 = microtime(1);
 		while ($zoom < 10.0) {
 			$t1 = microtime(1);
-			$frac = new Julia($limits, $size, 200);
+			$frac = new Julia(0, $limits, $size, 200);
 			$frac->zoom($n, $zoom);
 			$frac->generateImage(array(-0.70176, -0.3842), 255, 70);
 			$t2 = microtime(1);
