@@ -1,0 +1,45 @@
+<html>
+<head>
+<script>
+var downloadImage;
+var startTime;
+var frameCount;
+var fractalUrl;
+var fpsResolution;
+
+function startBenchmark() {
+	downloadImage = new Image();
+	startTime = Date.now();
+	frameCount = 0;
+	fractalUrl = document.getElementById('benchmark').value;
+	fpsResolution = 1;
+	downloadImage.onload = function() { onFrameLoad(downloadImage, 1.0); }
+	downloadImage.src = fractalUrl;
+}
+
+function onFrameLoad(downloadImage, zoomLevel) {
+	var fps = frameCount++ / ((Date.now() - startTime)/1000.0);
+	documentImage = document.getElementById('fractalImage');
+	document.getElementById('dashboard').innerHTML = (zoomLevel).toFixed(2)+'x'
+							+"&nbsp; &nbsp; &nbsp; &nbsp; FPS:  "+fps.toFixed(fpsResolution);
+	documentImage.src = downloadImage.src;   
+	if (zoomLevel<40) {
+		downloadImage = new Image();
+		downloadImage.onload = function() { onFrameLoad(downloadImage, zoomLevel*1.02); }
+		downloadImage.src = fractalUrl+"?zoom="+zoomLevel;
+	}
+}
+</script>
+</head>
+<body>
+<select id="benchmark">
+  <option value="php/index.php">PHP</option>
+  <option value="http://127.0.0.1:8000/julia2">Java</option>
+</select>
+<button onClick="startBenchmark()">Start</button>
+<span id='dashboard'></span>
+<p>
+<img src='' width='900' height='900' id='fractalImage'>
+</p>
+</body>
+</html>
